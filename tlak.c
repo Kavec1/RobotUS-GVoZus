@@ -1,14 +1,17 @@
-#include <stdbool.h>
-#include <avr/io.h>
+/*
+ * CFile1.c
+ *
+ * Created: 4/21/2017 11:12:37 PM
+ *  Author: Tomasko
+ */ 
+#include "tlak.h"
 
- DDRD = 0x00;   //PORTD input
- PORTD = 0xff;
- bool tlak(){
-	 if( (!(PIND & (1<<PD2)) & !(PIND & (1<<PD2))) )
-	 _delay_ms(5);
-	 return true;
-	 
-	 else
-	 _delay_ms(5);
-		return false;
- }
+int tlak() 
+{
+	if((PINB & (1<<2))) {
+		return 0;
+	} else {
+		return 1;
+	}
+	return -1;
+}
